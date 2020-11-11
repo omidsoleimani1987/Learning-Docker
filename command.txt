@@ -1,0 +1,11 @@
+## to build the image
+    docker build .
+
+## run the container based on this image id
+    docker run -p 3000:3000 fb907e4dc61a
+
+## list all running containers
+    docker ps
+
+## stop container
+    docker stop condescending_noether
