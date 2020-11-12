@@ -7,5 +7,87 @@
 ## list all running containers
     docker ps
 
+## list all containers
+    docker ps -a
+
 ## stop container
     docker stop condescending_noether
+
+
+
+
+*********************************************************************************
+
+
+
+
+
+create an image:
+
+## use existing image on docker hub
+        ( -it exposes the container to us to interact with it)
+        ( run creates a container based on the image ) 
+    docker run -it node
+
+
+
+
+***********************************************************************************
+
+
+
+Dockerfile
+
+## FROM -> build our image based on Docker hub "node" image
+    FROM node
+
+
+## COPY -> to tell which files from our local machine should go to that image
+    COPY . (path outside of the image, where files live, dot means the same folder that contains the Dockerfile) /app (path inside the image that files should be stored)
+
+    COPY . .    or     COPY . ./ (means the WORKDIR that we defined)
+
+## WORKDIR -> to tell docker in which folder should execute our commands like npm install for example
+
+## RUN npm install -> it would be executed when the image is created
+## CMD -> ["node", "server.js"] it would be executed when the container is started based on the image
+
+
+## EXPOSE -> ( let Docker know, when this container started,  we want to expose a certain port to our local system which runs this container)
+
+
+better approach for performance:
+
+    COPY package.json /app
+
+    RUN npm install
+
+    COPY . /app
+
+
+
+    
+***********************************************************************************
+
+
+
+create an image based on structure on Dockerfile
+    ## docker build . (dot means that dockerfile is in the same folder as we running this command)
+
+    Successfully built bd4b2d8615e6 : result
+
+    ## docker run bd4b2d8615e6
+
+    **** shutdown running container -> ## docker stop optimistic_hypatia
+
+    ## docker run -p 80(publish : to tell docker under which local port on our machine, this internal docker specific port 80 should be accessible /// local port:internal container expose port) 3000:80 bd4b2d8615e6
+    
+
+
+
+
+***********************************************************************************
+
+
+
+
