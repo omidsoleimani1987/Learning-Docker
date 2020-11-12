@@ -1,0 +1,18 @@
+# list running containers
+    docker ps
+
+
+# list all containers
+    docker ps -a
+
+
+# run existing container instead of new container (in detached mode / running in background)
+    docker start ( container ID or container name)
+    - or with new container in background adding -d (to detach)
+
+    
+    - to be able to interact with the running the existing container - in attached mode / running in foreground
+
+     to attach ourself to running container
+        1) docker attach CONTAINER_NAME/CONTAINER_ID
+        2) docker logs CONTAINER_NAME/CONTAINER_ID (to see the docker logs for the container)
